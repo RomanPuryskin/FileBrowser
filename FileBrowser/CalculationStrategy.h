@@ -1,17 +1,17 @@
 #ifndef CALCULATIONSTRATEGY_H
 #define CALCULATIONSTRATEGY_H
 #include <QString>
+#include <iostream>
+#include <QDir>
+#include <QFileInfo>
 
 class CalculationStrategy
 {
 public:
-    enum StrategyType
-    {
-        BY_FOLDER = 0,
-        BY_FILE_TYPE = 1
-    };
-    CalculationStrategy() {}
-    virtual void calculationMethod(QString path) = 0;
+
+    virtual ~CalculationStrategy(){}
+    virtual void CalculationMethod(QString path) = 0;
+
 };
 
 #endif // CALCULATIONSTRATEGY_H

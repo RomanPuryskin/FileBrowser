@@ -1,21 +1,14 @@
-#include <QDir>
+#include "browser.h"
 #include <iostream>
 #include <QCoreApplication>
 
+
+
 int main(int argc, char *argv[])
 {
-    QCoreApplication app(argc, argv);
-    QDir dir;
-    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    dir.setSorting(QDir::Size | QDir::Reversed);
-
-    QFileInfoList list = dir.entryInfoList();
-    std::cout << "     Bytes Filename" << std::endl;
-    for (int i = 0; i < list.size(); ++i) {
-        QFileInfo fileInfo = list.at(i);
-        std::cout << qPrintable(QString("%1 %2").arg(fileInfo.size(), 10)
-                                    .arg(fileInfo.fileName()));
-        std::cout << std::endl;
-    }
+    QString path = "C:/test";
+    Browser* browser = new Browser( new ByFolder_CalculationStrategy);
+    browser->CalculationMethod(path);
+    delete browser;
     return 0;
 }
