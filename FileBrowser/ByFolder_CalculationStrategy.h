@@ -6,6 +6,10 @@
 class ByFolder_CalculationStrategy: public CalculationStrategy
 {
 public:
+    ~ByFolder_CalculationStrategy()
+    {
+        directoryMap.clear();
+    }
     void CalculationMethod(QString path);
 
     quint64 getSizeOfFolder(QString path, quint64 sizeOfFolder);
