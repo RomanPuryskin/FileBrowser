@@ -9,6 +9,10 @@ void ByFolder_CalculationStrategy::CalculationMethod(QString path)
 
     // если директория пуста
     /*...*/
+    if(path == ".")
+        directoryPath = dir.absolutePath();
+    else
+        directoryPath = path;
 
     dir.setFilter(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList list = dir.entryInfoList();
@@ -19,17 +23,15 @@ void ByFolder_CalculationStrategy::CalculationMethod(QString path)
         {
             quint64 currentSizeOfFolder = 0;
             directoryMap[fileInfo.fileName()] = getSizeOfFolder(fileInfo.absoluteFilePath() , currentSizeOfFolder);
-            // directorySize += directoryMap[fileInfo.fileName()];
+            directorySize += directoryMap[fileInfo.fileName()];
         }
 
         else
         {
             directoryMap["(Current folder)"] += fileInfo.size();
+            directorySize += fileInfo.size();
         }
     }
-
-    for (auto i = directoryMap.cbegin(); i != directoryMap.cend(); ++i)
-        std::cout << qPrintable(i.key()) << ": " << i.value() << std::endl;
 }
 
 quint64 ByFolder_CalculationStrategy::getSizeOfFolder(QString path, quint64 sizeOfFolder)

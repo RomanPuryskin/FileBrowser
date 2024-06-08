@@ -10,6 +10,7 @@ SOURCES += \
         ByFileType_CalculationStrategy.cpp \
         ByFolder_CalculationStrategy.cpp \
         browser.cpp \
+        logger.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -21,4 +22,5 @@ HEADERS += \
     ByFileType_CalculationStrategy.h \
     ByFolder_CalculationStrategy.h \
     CalculationStrategy.h \
-    browser.h
+    browser.h \
+    logger.h

@@ -9,11 +9,12 @@ void ByFileType_CalculationStrategy::CalculationMethod(QString path)
 
     // если директория пуста
     /*...*/
+    if(path == ".")
+        directoryPath = dir.absolutePath();
+    else
+        directoryPath = path;
 
     recursiveGetTypesOfFolder(path);
-
-    for (auto i = directoryMap.cbegin(); i != directoryMap.cend(); ++i)
-        std::cout << qPrintable(i.key()) << ": " << i.value() << std::endl;
 }
 
 void ByFileType_CalculationStrategy::recursiveGetTypesOfFolder(QString path)
@@ -27,6 +28,8 @@ void ByFileType_CalculationStrategy::recursiveGetTypesOfFolder(QString path)
 
         else
             directoryMap[file.suffix()] = file.size();
+
+        directorySize += file.size();
     }
 
     foreach (QFileInfo folder, dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden | QDir::NoSymLinks))
