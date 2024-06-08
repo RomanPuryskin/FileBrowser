@@ -2,14 +2,9 @@
 #include <iostream>
 #include <QCoreApplication>
 
-void logger(QMap<QString , quint64> directoryMap)
-{
-
-}
-
 int main(int argc, char *argv[])
 {
-    QString path =".";
+    QString path ="C:/test/pup";
     Browser* browser = new Browser( new ByFolder_CalculationStrategy);
     browser->CalculationMethod(path);
     browser->PrintInfo();

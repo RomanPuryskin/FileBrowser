@@ -7,8 +7,6 @@ void ByFileType_CalculationStrategy::CalculationMethod(QString path)
     if (!dir.exists())
         throw std::runtime_error("Cannot find the example directory");
 
-    // если директория пуста
-    /*...*/
     if(path == ".")
         directoryPath = dir.absolutePath();
     else

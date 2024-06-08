@@ -7,7 +7,11 @@
 class Browser
 {
 public:
-    Browser( CalculationStrategy* strategy): m_strategy(strategy) {}
+    Browser( CalculationStrategy* strategy)
+    {
+        logger = new Logger;
+        m_strategy = strategy;
+    }
     ~Browser() { delete m_strategy; delete logger;}
     void CalculationMethod( QString path )
     {
