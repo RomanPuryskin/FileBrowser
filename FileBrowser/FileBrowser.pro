@@ -9,7 +9,6 @@ CONFIG += c++17 cmdline
 SOURCES += \
         ByFileType_CalculationStrategy.cpp \
         ByFolder_CalculationStrategy.cpp \
-        browser.cpp \
         logger.cpp \
         main.cpp
 
