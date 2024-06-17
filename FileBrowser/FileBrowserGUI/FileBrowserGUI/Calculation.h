@@ -95,4 +95,24 @@ public:
     }
 
 };
+
+class Browser
+{
+public:
+    Browser( CalculationStrategy* strategy)
+    {
+        m_strategy = strategy;
+    }
+    ~Browser() { delete m_strategy;}
+    QMap<QString,quint64> CalculationMethod( QString path )
+    {
+        return m_strategy->CalculationMethod(path);
+    }
+    void setStrategy(CalculationStrategy *strategy)
+    {
+        m_strategy = strategy;
+    }
+private:
+    CalculationStrategy* m_strategy;
+};
 #endif // CALCULATION_H
