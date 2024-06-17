@@ -1,36 +1,34 @@
 #include "ByFileType_CalculationStrategy.h"
 
-void ByFileType_CalculationStrategy::CalculationMethod(QString path)
+QMap<QString , quint64> ByFileType_CalculationStrategy::CalculationMethod(QString path)
 {
     QDir dir(path);
     // если такой директории нет
     if (!dir.exists())
         throw std::runtime_error("Cannot find the example directory");
 
-    if(path == ".")
-        directoryPath = dir.absolutePath();
-    else
-        directoryPath = path;
+    QMap<QString , quint64> directoryMap;
 
-    recursiveGetTypesOfFolder(path);
+    directoryMap = recursiveGetTypesOfFolder(path , directoryMap);
+
+    return directoryMap;
 }
 
-void ByFileType_CalculationStrategy::recursiveGetTypesOfFolder(QString path)
+QMap<QString , quint64> ByFileType_CalculationStrategy::recursiveGetTypesOfFolder(QString path, QMap<QString , quint64>& map)
 {
     QDir dir = QDir(path);
 
     foreach (QFileInfo file, dir.entryInfoList(QDir::Files| QDir::NoDotAndDotDot | QDir::Hidden | QDir::NoSymLinks))
     {
-        if(directoryMap.contains(file.suffix()))
-            directoryMap[file.suffix()] += file.size();
+        if(map.contains(file.suffix()))
+            map[file.suffix()] += file.size();
 
         else
-            directoryMap[file.suffix()] = file.size();
-
-        directorySize += file.size();
+            map[file.suffix()] = file.size();
     }
 
     foreach (QFileInfo folder, dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden | QDir::NoSymLinks))
-        recursiveGetTypesOfFolder(folder.absoluteFilePath());
+        recursiveGetTypesOfFolder(folder.absoluteFilePath(), map);
 
+    return map;
 }

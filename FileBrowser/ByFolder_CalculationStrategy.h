@@ -5,14 +5,8 @@
 class ByFolder_CalculationStrategy: public CalculationStrategy
 {
 public:
-    ~ByFolder_CalculationStrategy()
-    {
-        directoryMap.clear();
-    }
-    void CalculationMethod(QString path);
-
+    QMap<QString , quint64> CalculationMethod(QString path);
     quint64 getSizeOfFolder(QString path, quint64 sizeOfFolder);
-
 };
 
 #endif // BYFOLDER_CALCULATIONSTRATEGY_H
