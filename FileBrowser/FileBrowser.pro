@@ -9,7 +9,6 @@ CONFIG += c++17 cmdline
 SOURCES += \
         ByFileType_CalculationStrategy.cpp \
         ByFolder_CalculationStrategy.cpp \
-        logger.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -21,5 +20,4 @@ HEADERS += \
     ByFileType_CalculationStrategy.h \
     ByFolder_CalculationStrategy.h \
     CalculationStrategy.h \
-    browser.h \
-    logger.h
+    browser.h

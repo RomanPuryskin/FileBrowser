@@ -5,12 +5,8 @@
 class ByFileType_CalculationStrategy : public CalculationStrategy
 {
 public:
-    ~ByFileType_CalculationStrategy()
-    {
-        directoryMap.clear();
-    }
-    void CalculationMethod(QString path);
-    void recursiveGetTypesOfFolder(QString path);
+    QMap<QString , quint64> CalculationMethod(QString path);
+    QMap<QString , quint64> recursiveGetTypesOfFolder(QString path, QMap<QString , quint64>& map);
 
 };
 
