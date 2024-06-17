@@ -7,6 +7,7 @@ class ByFolder_CalculationStrategy: public CalculationStrategy
 public:
     QMap<QString , quint64> CalculationMethod(QString path);
 private:
+
     quint64 getSizeOfFolder(QString path, quint64 sizeOfFolder);
 };
 
