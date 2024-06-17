@@ -6,6 +6,8 @@ class ByFileType_CalculationStrategy : public CalculationStrategy
 {
 public:
     QMap<QString , quint64> CalculationMethod(QString path);
+private:
+
     QMap<QString , quint64> recursiveGetTypesOfFolder(QString path, QMap<QString , quint64>& map);
 
 };
