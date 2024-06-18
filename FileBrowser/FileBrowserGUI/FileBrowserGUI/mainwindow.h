@@ -28,8 +28,14 @@ private:
     QTreeView *treeView; // для отображения файловой системы деревом
 
     // выбор стратегии
-    QLabel *labelChooseStategy;
-    QComboBox *chooseStategyBox;
+    QLabel *strategyLabel;
+    QComboBox *strategyBox;
+
+    //лэйауты
+    QHBoxLayout *panelLayout;
+    QHBoxLayout *viewsLayout;
+    QVBoxLayout *mainLayout;
+
 
     Browser* m_strategy;
 };
