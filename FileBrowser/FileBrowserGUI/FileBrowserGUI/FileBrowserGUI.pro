@@ -14,7 +14,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
-    Calculation.h \
+    calculation.h \
     datamodel.h \
     mainwindow.h
 

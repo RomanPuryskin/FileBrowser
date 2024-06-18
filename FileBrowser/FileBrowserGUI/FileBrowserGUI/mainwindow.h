@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QWidget>
 #include <QTableView>
 #include <QTreeView>
@@ -9,7 +8,7 @@
 #include <QFileSystemModel>
 #include <QLabel>
 #include <QComboBox>
-#include "Calculation.h"
+#include "calculation.h"
 #include "datamodel.h"
 
 class MainWindow : public QWidget
@@ -18,10 +17,9 @@ class MainWindow : public QWidget
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow(){delete m_strategy;}
 
 private:
-
     DataModel *m_model; // наша табличная модель
     QTableView *tableView; // для работы с таблицами
     QFileSystemModel *systemModel; // для работы с файловой системой
@@ -36,7 +34,10 @@ private:
     QHBoxLayout *viewsLayout;
     QVBoxLayout *mainLayout;
 
-
     Browser* m_strategy;
+
+private slots:
+    void selectedSlot(const QItemSelection &selected, const QItemSelection &deselected);
+    void strategyBoxSlot(int strategy);
 };
 #endif // MAINWINDOW_H
