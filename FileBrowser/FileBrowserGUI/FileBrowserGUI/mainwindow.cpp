@@ -1,14 +1,14 @@
 #include "mainwindow.h"
 #include <QDebug>
-QString getPersent(quint64 directorySize, quint64 currentSize)
+QString getPersent(quint64 currentSize, quint64 directorySize)
 {
     double percent = static_cast<double>(currentSize) / static_cast<double>(directorySize) * 100;
     if (percent < 0.01)
     {
-        return "<0.01";
+        return "<0.01%";
     }
     else
-        return QString::number(percent,'f', 2);
+        return QString::number(percent,'f', 2) + "%";
 }
 
 quint64 getSizeOfDirectory(QMap<QString,quint64> map)
@@ -35,6 +35,7 @@ QList<TableModel> fillTable(QMap<QString , quint64> map)
 
 MainWindow::MainWindow(QWidget *parent): QWidget{parent}
 {
+    setWindowTitle("FileBrowser");
     m_strategy = new Browser(new ByFolder_CalculationStrategy);
     // создали нашу модель и привязали к виджету
     m_model = new DataModel(this);
