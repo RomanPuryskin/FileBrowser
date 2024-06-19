@@ -15,7 +15,7 @@ int DataModel::rowCount(const QModelIndex &parent) const
 int DataModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return PERCENT + 1; // 2 + 1
+    return PERCENT + 1; // 3
 }
 
 QVariant DataModel::data(const QModelIndex &index, int role) const

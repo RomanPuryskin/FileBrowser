@@ -11,6 +11,12 @@ QString getPersent(quint64 currentSize, quint64 directorySize)
         return QString::number(percent,'f', 2) + "%";
 }
 
+QString convertKiloBytes(quint64 size)
+{
+    double kiloBytes = static_cast<double>(size) / 1024;
+    return QString::number(kiloBytes,'f',2) + "Kb";
+}
+
 quint64 getSizeOfDirectory(QMap<QString,quint64> map)
 {
     quint64 totalSize = 0;
@@ -25,9 +31,11 @@ QList<TableModel> fillTable(QMap<QString , quint64> map)
 
     QList<TableModel> result;
 
+
+
     for(auto i = map.begin(); i!= map.cend(); i++)
     {
-        result.append(TableModel(i.key() , QString::number(i.value()) , getPersent(i.value() , totalSize)));
+        result.append(TableModel(i.key() , convertKiloBytes(i.value()) , getPersent(i.value() , totalSize)));
     }
 
     return result;
