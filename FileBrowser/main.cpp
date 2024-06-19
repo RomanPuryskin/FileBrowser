@@ -30,8 +30,8 @@ void PrintInformation(QMap<QString,quint64> map)
 
 int main(int argc, char *argv[])
 {
-    QString path ="C:/test";
-    Browser* browser = new Browser( new ByFileType_CalculationStrategy);
+    QString path ="../test";
+    Browser* browser = new Browser( new ByFolder_CalculationStrategy);
     PrintInformation(browser->CalculationMethod(path));
     delete browser;
     return 0;
